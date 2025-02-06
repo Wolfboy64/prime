@@ -85,24 +85,24 @@ namespace WindowsFormsApp1
         }
         public static List<int> Felbontas(int x)
         {
-            List<int> osztok = new List<int>();  // Üres lista az osztók tárolásához
+            List<int> osztok = new List<int>();  
 
             if (x == 1)
             {
-                osztok.Add(1);  // 1-nek csak 1 az osztója
+                osztok.Add(1); 
             }
             else
             {
-                for (int i = 1; i <= x; i++)  // Végigmegyünk 1-től x-ig
+                for (int i = 1; i <= x; i++) 
                 {
-                    if (x % i == 0)  // Ha i osztója x-nek
+                    if (x % i == 0)  
                     {
-                        osztok.Add(i);  // Hozzáadjuk i-t az osztók listájához
+                        osztok.Add(i);  
                     }
                 }
             }
 
-            return osztok;  // Visszaadjuk az osztók listáját
+            return osztok;  
         }
     }
 }
