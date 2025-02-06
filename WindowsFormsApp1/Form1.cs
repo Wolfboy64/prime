@@ -39,39 +39,19 @@ namespace WindowsFormsApp1
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            int keresett = 34;
-            /*if (prime(keresett) == true)
-            {
-                lbl.Text += "A " + keresett.ToString() + " primszám";
-            }
-            else 
-            {
-                lbl.Text += "A " + keresett.ToString() + " nem primszám";
-            }*/
+            int keresett = 243;
 
-            int local_ = 0;
-            while (lista.Count() < 50)
-            {
-                if (prime(local_) == true)
-                {
-                    lista.Add(local_);
-                }
-                local_++;
-            }
-            /*for (int i = 0; i < lista.Count; i++)
-            {
-               lbl.Text += "\n" + lista[i];
-            }*/
+            // Listába csak a prímosztókat rakjuk
+            List<int> primeDivisors = Felbontas(keresett);
 
-            //lbl.Text += "\n" + lista[28];
-            for (int i = 0; i < Felbontas(keresett).Count; i++)
+            // Kiíratjuk a prímosztókat
+            foreach (int oszto in primeDivisors)
             {
-                lbl.Text += Felbontas(keresett)[i] + "; ";
+                lbl.Text = "A " + keresett.ToString() + " Prim osztója a " +  oszto + "; ";
             }
-            
         }
 
-        public bool prime(int x)
+        public static bool prime(int x)
         {
             if (x <= 1) { return false; }
             for (int i = 2; i <= Math.Sqrt(x); i++)
@@ -83,26 +63,28 @@ namespace WindowsFormsApp1
             }
             return true;
         }
+
         public static List<int> Felbontas(int x)
         {
-            List<int> osztok = new List<int>();  
+            List<int> osztok = new List<int>();
 
             if (x == 1)
             {
-                osztok.Add(1); 
+                osztok.Add(1);
             }
             else
             {
-                for (int i = 1; i <= x; i++) 
+                for (int i = 1; i <= x; i++)
                 {
-                    if (x % i == 0)  
+                    if (x % i == 0 && prime(i))  // Csak akkor hozzáadjuk, ha az i prím
                     {
-                        osztok.Add(i);  
+                        osztok.Add(i);
                     }
                 }
             }
 
-            return osztok;  
+            return osztok;
         }
+
     }
 }
